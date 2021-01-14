@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "limits": "c"
+    },
+    "C_Cpp.commentContinuationPatterns": [
+
+        "/**"
+    ],
+    "C_Cpp.formatting": "Disabled"
+}
