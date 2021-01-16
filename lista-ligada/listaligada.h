@@ -15,4 +15,7 @@ void imprime_lista_rec(p_no lista);
 void imprime_lista_iter(p_no lista);
 p_no remove_ocorrencias(p_no lista, int x);
 p_no remove_elemento(p_no lista, int x);
-p_no copiar_lista(p_no lista);
+p_no copiar_lista_rec(p_no lista);
+p_no copiar_lista_iter(p_no lista);
+p_no inverter_lista_rec(p_no lista);
+p_no inverter_lista_iter(p_no lista);

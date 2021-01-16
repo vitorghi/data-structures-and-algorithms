@@ -78,10 +78,36 @@ p_no remove_ocorrencias(p_no lista, int x) {
     return novo;
 }
 
-p_no copiar_lista(p_no lista) {
+p_no copiar_lista_rec(p_no lista) {
     if (lista == NULL) return NULL;
     p_no novo = malloc(sizeof(No));
     novo->dado = lista->dado;
-    novo->prox = copiar_lista(lista->prox);
+    novo->prox = copiar_lista_rec(lista->prox);
     return novo;
+}
+
+p_no copiar_lista_iter(p_no lista) {
+    p_no novo, head = NULL, anterior = NULL;
+    for (p_no atual = lista; atual != NULL; atual = atual->prox) {
+        novo = malloc(sizeof(No));
+        if (head == NULL) head = novo;
+        novo->dado = atual->dado;
+        if (anterior != NULL) anterior->prox = novo;
+        anterior = novo;
+    }
+    if (novo != NULL) novo->prox = NULL;
+    return head;
+}
+
+p_no inverter_lista_iter(p_no lista) {
+    p_no atual, anterior = NULL, invertida = NULL;
+    atual = lista;
+    while (atual != NULL) {
+        p_no prox = atual->prox;
+        atual->prox = anterior;
+        anterior = atual;
+        invertida = atual;
+        atual = prox;
+    }
+    return invertida;
 }
