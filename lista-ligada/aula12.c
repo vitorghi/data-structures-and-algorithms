@@ -13,16 +13,15 @@ int main() {
     printf("imprimindo lista:\n");
     imprime_lista_rec(lista);
 
+    p_no invertidaRec = inverter_lista_rec(lista);
+    printf("imprimindo lista invertida recursivamente:\n");
+    imprime_lista_rec(invertidaRec);
 
-    //lista = remove_ocorrencias(lista, 4);
-    //p_no nova_lista = copiar_lista_iter(lista);
-
-    p_no invertida = inverter_lista_iter(lista);
-    printf("imprimindo lista invertida:\n");
-    imprime_lista_rec(invertida);
+    p_no nova_lista = copiar_lista_rec(lista);
+    p_no concatenada = concatenar_listas_rec(lista, nova_lista);
+    printf("imprimindo lista concatenada recursivamente:\n");
+    imprime_lista_rec(concatenada);
 
     destruir_lista_rec(lista);
-    //destruir_lista_rec(invertida);
-
     return 0;
 }

@@ -100,14 +100,44 @@ p_no copiar_lista_iter(p_no lista) {
 }
 
 p_no inverter_lista_iter(p_no lista) {
-    p_no atual, anterior = NULL, invertida = NULL;
-    atual = lista;
+    p_no atual = lista, anterior, invertida = NULL;
     while (atual != NULL) {
-        p_no prox = atual->prox;
-        atual->prox = anterior;
         anterior = atual;
-        invertida = atual;
-        atual = prox;
+        atual = anterior->prox;
+        anterior->prox = invertida;
+        invertida = anterior;
     }
     return invertida;
+}
+
+p_no inverterR(p_no atual, p_no anterior) {
+    if (atual == NULL) return anterior;
+    p_no prox = atual->prox;
+    atual->prox = anterior;
+    anterior = atual;
+    return inverterR(prox, anterior);
+}
+
+p_no inverter_lista_rec(p_no lista) {
+    p_no anterior = NULL;
+    return inverterR(lista, anterior);
+}
+
+p_no concatenar_listas_rec(p_no primeira, p_no segunda) {
+    if (primeira == NULL) return segunda;
+    primeira->prox = concatenar_listas_rec(primeira->prox, segunda);
+    return primeira;
+}
+
+p_no concatenar_listas_iter(p_no primeira, p_no segunda) {
+    if (primeira == NULL) return segunda;
+    p_no atual = primeira;
+    while (1) {
+        if (atual == NULL) {
+            atual->prox = segunda;
+            break;
+        }
+        atual = atual->prox;
+    }
+    return primeira;
 }
