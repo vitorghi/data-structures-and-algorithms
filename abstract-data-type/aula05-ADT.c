@@ -12,7 +12,7 @@
 
 Como compilar? Temos três arquivos diferentes:
     • aula05.c contém a função main
-    • aula05-impl.h contém a implementação
+    • aula05-impl.c contém a implementação
     • aula05.h contém a interface
 
 Vamos compilar por partes:
