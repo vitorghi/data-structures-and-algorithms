@@ -133,7 +133,7 @@ p_no concatenar_listas_iter(p_no primeira, p_no segunda) {
     if (primeira == NULL) return segunda;
     p_no atual = primeira;
     while (1) {
-        if (atual == NULL) {
+        if (atual->prox == NULL) {
             atual->prox = segunda;
             break;
         }
