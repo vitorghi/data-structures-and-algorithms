@@ -10,3 +10,4 @@ p_fila criar_fila();
 void destruir_fila();
 void imprimir_fila(p_fila f);
 void enfileirar(p_fila f, int x);
+int desenfileirar(p_fila f);

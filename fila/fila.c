@@ -29,3 +29,15 @@ void enfileirar(p_fila f, int x) {
     }
     f->fim = novo;
 }
+
+int desenfileirar(p_fila f) {
+    //if (f->ini == NULL) return ERROR;
+    p_no primeiro = f->ini;
+    int dado = primeiro->dado;
+    f->ini = f->ini->prox;
+    if(f->ini == NULL) {
+        f->fim = NULL;
+    }
+    free(primeiro);
+    return dado;
+}

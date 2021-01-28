@@ -10,6 +10,10 @@ int main() {
     enfileirar(fila, 5);
 
     imprimir_fila(fila);
+    int resultado = desenfileirar(fila);
+    printf("\n desenfileirado: %d\n", resultado);
+    imprimir_fila(fila);
+
     destruir_fila(fila);
 
     return 0;
