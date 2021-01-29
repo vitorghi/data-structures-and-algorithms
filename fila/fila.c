@@ -31,7 +31,7 @@ void enfileirar(p_fila f, int x) {
 }
 
 int desenfileirar(p_fila f) {
-    //if (f->ini == NULL) return ERROR;
+    if (f->ini == NULL) exit(1);
     p_no primeiro = f->ini;
     int dado = primeiro->dado;
     f->ini = f->ini->prox;
