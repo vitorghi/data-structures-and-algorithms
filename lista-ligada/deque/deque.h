@@ -1,8 +1,13 @@
-#include "../listaligada.h"
+typedef struct No {
+    int dado;
+    struct No *prox;
+    struct No *ant;
+} No;
+
+typedef struct No * p_no;
 
 typedef struct {
-    p_no ini;
-    p_no fim;
+    p_no ini, fim;
 } Deque;
 
 typedef Deque * p_deque;

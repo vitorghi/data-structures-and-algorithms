@@ -9,8 +9,11 @@ int main() {
     insere_inicio(deque, 4);
     insere_fim(deque, 5);
 
-    printf("inicio %d\n", deque->ini->dado);
-    printf("fim %d\n", deque->fim->dado);
+    remove_inicio(deque);
+    remove_fim(deque);
+
+    printf("inicio: %d\n", deque->ini->dado);
+    printf("fim: %d\n", deque->fim->dado);
 
     imprimir_deque(deque);
     destruir_deque(deque);
