@@ -11,3 +11,4 @@ void destruir_pilha(p_pilha p);
 void imprimir_pilha(p_pilha p);
 void empilhar(p_pilha p, int x); // push
 int desempilhar(p_pilha p); // pop
+int eh_vazia(p_pilha p);

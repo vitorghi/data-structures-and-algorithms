@@ -31,3 +31,8 @@ int desempilhar(p_pilha p) {
     free(desempilhado);
     return dado;
 }
+
+int eh_vazia(p_pilha p) {
+    if (p->topo == NULL) return 1;
+    return 0;
+}
