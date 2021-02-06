@@ -32,6 +32,11 @@ int desempilhar(p_pilha p) {
     return dado;
 }
 
+int espiar(p_pilha p) {
+    if (eh_vazia(p)) return NULL;
+    return p->topo->dado;
+}
+
 int eh_vazia(p_pilha p) {
     if (p->topo == NULL) return 1;
     return 0;
