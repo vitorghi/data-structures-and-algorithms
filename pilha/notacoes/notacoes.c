@@ -2,14 +2,12 @@
 #include "../pilha.h"
 /*
 infixa: : é a notação cotidiana
-    – Ordem normal de leitura, com parênteses para evitar
-      ambiguidade
+    – Ordem normal de leitura, com parênteses para evitar ambiguidade
 
 pré-fixa: é a notação polonesa do lógico Jan Lukasiewicz
     – Operador precede operandos
 
-pós-fixa: é notação polonesa reversa (RPN), das calculadoras
-HP, ...
+pós-fixa: é notação polonesa reversa (RPN), das calculadoras HP, ...
     – Operador sucede operandos
 
 Exemplo 1:
@@ -45,7 +43,7 @@ int calculo_pos_fixa(char *expressao) {
                 break;
         }
     }
-    imprime_lista_rec(pilha->topo);
+    imprimir_pilha(pilha);
     int resultado = desempilhar(pilha);
     destruir_pilha(pilha);
     return resultado;

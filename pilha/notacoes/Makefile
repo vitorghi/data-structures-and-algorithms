@@ -5,7 +5,7 @@ build:
 	gcc listaligada.o notacoes.o pilha.o -lm -o notacoes
 
 run:
-	./notacoes
+	./notacoes < entrada
 
 clean:
 	rm *.o
