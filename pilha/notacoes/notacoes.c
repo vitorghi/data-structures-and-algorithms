@@ -37,9 +37,9 @@ int calculo_pos_fixa(char *expressao) {
                 empilhado = desempilhar(pilha) * desempilhar(pilha);
                 printf("empilhando *: %d\n", empilhado);
                 empilhar(pilha, empilhado);
+                break;
             default:
-                empilhado = expressao[i] - '0'; // turns char '1' into int '1'
-                if (empilhado == -6) break;
+                empilhado = expressao[i] - '0'; // e.g.: turns char '1' into int '1'
                 printf("empilhando numero: %d\n", empilhado);
                 empilhar(pilha, empilhado);
                 break;
