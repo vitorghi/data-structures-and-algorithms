@@ -43,12 +43,11 @@ void imprime_vetor(int *vetor, int n) {
 }
 
 void sequenciasR(int *seq, int n, int k, int i) {
-    int v;
     if (i == k) {
         imprime_vetor(seq, k);
         return;
     }
-    for (v = 1; v <= n; v++) {
+    for (int v = 1; v <= n; v++) {
         seq[i] = v;
         sequenciasR(seq, n, k, i + 1);
     }
