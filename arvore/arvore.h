@@ -12,3 +12,9 @@ p_no procurar_no(p_no raiz, int x);
 int numero_nos(p_no raiz);
 
 int altura(p_no raiz);
+
+void imprime_pre_ordem(p_no raiz);
+
+void imprime_pos_ordem(p_no raiz);
+
+void imprime_in_ordem(p_no raiz);
