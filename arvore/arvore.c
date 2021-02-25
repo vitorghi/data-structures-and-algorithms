@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "arvore.h"
 #include "../pilha/pilha.h"
+#include "../fila/fila.h"
 
 p_no criar_arvore(int x, p_no esq, p_no dir) {
     p_no raiz = malloc(sizeof(No));
@@ -73,4 +74,19 @@ void imprime_pre_ordem_iterativo(p_no raiz) {
         }
     }
     destruir_pilha(pilha);
+}
+
+// Percurso em largura
+void percurso_em_largura(p_no raiz) {
+    p_fila fila = criar_fila();
+    enfileirar(fila, raiz);
+    while(!eh_vazia(fila)) {
+        raiz = desenfileirar(fila);
+        if (raiz != NULL) {
+            enfileirar(fila, raiz->dir);
+            enfileirar(fila, raiz->esq);
+            printf("%d", dado);
+        }
+    }
+    destruir_fila(fila);
 }
