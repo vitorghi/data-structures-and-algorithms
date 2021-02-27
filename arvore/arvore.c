@@ -90,3 +90,10 @@ void percurso_em_largura(p_no raiz) {
     }
     destruir_fila(fila);
 }
+
+void conta_folhas(p_no raiz, int count) {
+    if (raiz == NULL) return;
+    if (raiz->esq == NULL && raiz->dir == NULL) count++;
+    conta_folhas(raiz->esq);
+    conta_folhas(raiz->dir);
+}
