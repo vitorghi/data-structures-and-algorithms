@@ -97,3 +97,33 @@ void conta_folhas(p_no raiz, int count) {
     conta_folhas(raiz->esq);
     conta_folhas(raiz->dir);
 }
+
+int arvore_eh_igual(p_no primeira, p_no segunda) {
+    p_fila fila = criar_fila();
+    int eh_igual = 1;
+
+    enfileirar(fila, primeira);
+    enfileirar(fila, segunda);
+
+    while(!eh_vazia(fila)) {
+        primeira = desenfileirar(fila);
+        segunda = desenfileirar(fila);
+        if (primeira == NULL && segunda == NULL) break;
+        else if ((primeira == NULL && segunda != NULL) || (primeira != NULL && segunda == NULL)) {
+            eh_igual = 0;
+            break;
+        }
+        else if (primeira->dado == segunda->dado) {
+            enfileirar(fila, primeira->dir);
+            enfileirar(fila, segunda->dir);
+            enfileirar(fila, primeira->esq);
+            enfileirar(fila, segunda->esq);
+        } else {
+            eh_igual = 0;
+            break;
+        }
+    }
+
+    destruir_fila(fila);
+    return eh_igual;
+}
