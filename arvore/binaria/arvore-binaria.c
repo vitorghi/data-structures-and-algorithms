@@ -87,3 +87,19 @@ p_no maximo_iterativo(p_no raiz) {
         raiz = raiz->dir;
     return raiz;
 }
+
+p_no sucessor(p_no x) {
+    if (x->dir != NULL)
+        return minimo(x->dir);
+    else
+         return ancestral_a_direita(x);
+}
+
+p_no ancestral_a_direita(p_no x) {
+    if (x == NULL)
+        return NULL;
+    if (x->pai == NULL || x->pai->esq == x)
+        return x->pai;
+    else
+        return ancestral_a_direita(x->pai);
+}
