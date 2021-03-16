@@ -103,3 +103,35 @@ p_no ancestral_a_direita(p_no x) {
     else
         return ancestral_a_direita(x->pai);
 }
+
+void remover_sucessor(p_no raiz) {
+    p_no t = raiz->dir; // mínimo da subarvore direita
+    p_no pai = raiz; // pai de t
+    while (t->esq != NULL) {
+        pai = t;
+        t = t->esq;
+    }
+    if (pai->esq == t)
+        pai->esq = t->dir;
+    else
+        pai->dir = t->dir;
+    raiz->chave = t->chave;
+}
+
+p_no remover(p_no raiz, int chave) {
+    if (raiz == NULL)
+        return NULL;
+
+    if (chave > raiz->chave)
+        raiz->esq = remover(raiz->esq, chave);
+    else if (chave < raiz->chave)
+        raiz->dir = remover(raiz->dir, chave);
+    else if (raiz->esq == NULL)
+        return raiz->dir;
+    else if (raiz->dir == NULL)
+        return raiz->esq;
+    else
+        remover_sucessor(raiz);
+
+    return raiz;
+}
