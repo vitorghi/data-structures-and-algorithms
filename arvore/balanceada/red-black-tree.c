@@ -2,7 +2,7 @@
     Implementação de uma árvore rubro-negra esquerdista
     (Left-leaning red-black tree)
 
-
+    Search, insertion and removal in O(lg n)
 */
 
 #include <stdlib.h>
@@ -14,6 +14,7 @@ int ehVermelho(p_no x) {
         return 0;
     return x->cor == VERMELHO;
 }
+
 int ehPreto(p_no x) {
     if (x == NULL)
         return 1;
@@ -56,7 +57,15 @@ p_no inserir_rec(p_no raiz, int chave) {
         raiz->esq = inserir_rec(raiz->esq, chave);
     else
         raiz->dir = inserir_rec(raiz->dir, chave);
-    // Precisa corrigir a árvore aqui
+
+    // corrigindo a árvore:
+    if (ehVermelho(raiz->dir) && ehPreto(raiz->esq))
+        raiz = rotaciona_para_esquerda(raiz);
+    if (ehVermelho(raiz->esq) && ehVermelho(raiz->esq->esq))
+        raiz = rotaciona_para_direita(raiz);
+    if(ehVermelho(raiz->esq) && ehVermelho(raiz->dir))
+        sobe_vermelho(raiz);
+
     return raiz;
 }
 
