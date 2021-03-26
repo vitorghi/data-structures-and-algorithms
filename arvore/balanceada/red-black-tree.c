@@ -1,8 +1,19 @@
 /*
-    Implementação de uma árvore rubro-negra esquerdista
-    (Left-leaning red-black tree)
+Implementação de uma árvore rubro-negra esquerdista
+(Left-leaning red-black tree)
 
-    Search, insertion and removal in O(lg n)
+Busca, inserção e remoção em O(lg n)
+
+Uma árvore rubro-negra esquerdista é uma ABB tal que:
+    1. Todo nó é ou vermelho ou preto
+    2. A raiz é preta
+    3. As folhas são NULL e tem cor preta
+    4. Se um nó é vermelho, seus dois filhos são pretos
+        – ele é o filho esquerdo do seu pai (por isso, esquerdista)
+    5. Em cada nó, todo caminho dele para uma de suas folhas
+       descendentes tem a mesma quantidade de nós pretos
+        – Não contamos o nó
+        – É a altura-negra do nó
 */
 
 #include <stdlib.h>
