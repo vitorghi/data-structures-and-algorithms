@@ -94,8 +94,8 @@ void percurso_em_largura(p_no raiz) {
 void conta_folhas(p_no raiz, int count) {
     if (raiz == NULL) return;
     if (raiz->esq == NULL && raiz->dir == NULL) count++;
-    conta_folhas(raiz->esq);
-    conta_folhas(raiz->dir);
+    conta_folhas(raiz->esq, count);
+    conta_folhas(raiz->dir, count);
 }
 
 int arvore_eh_igual(p_no primeira, p_no segunda) {
