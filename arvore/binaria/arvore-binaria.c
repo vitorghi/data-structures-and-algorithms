@@ -135,3 +135,25 @@ p_no remover(p_no raiz, int chave) {
 
     return raiz;
 }
+
+p_no apaga_folhas(p_no raiz) {
+    if (raiz == NULL)
+        return;
+    if (raiz->esq == NULL && raiz->dir == NULL) {
+        free(raiz);
+        return NULL;
+    }
+    raiz->esq = apaga_folhas(raiz->esq);
+    raiz->dir = apaga_folhas(raiz->dir);
+    return raiz;
+}
+
+int equals(p_no primeira, p_no segunda) {
+    if (primeira == NULL && segunda == NULL)
+        return 1;
+    if (primeira != NULL && segunda != NULL)
+        return primeira->chave == segunda->chave &&
+            equals(primeira->esq, segunda->esq) &&
+            equals(primeira->dir, segunda->dir);
+    return 0;
+}
