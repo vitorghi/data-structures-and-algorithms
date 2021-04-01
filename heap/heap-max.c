@@ -51,8 +51,15 @@ void desce_no_heap(p_fp fprio, int k) {
 // O(lg n)
 Item extrai_maximo(p_fp fprio) {
     Item item = fprio->v[0];
-    fprio->v[0] = fprio->v[fprio->n - 1];
+    troca(&fprio->v[0], &fprio->v[fprio->n - 1]);
     fprio->n--;
     desce_no_heap(fprio, 0);
     return item;
+}
+
+// O(lg n) mas precisamos conhecer a posição do item
+void muda_prioridade(p_fp fprio, int k, int valor) {
+    int chave_antiga = fprio->v[k].chave;
+    fprio->v[k].chave = valor;
+    chave_antiga > valor ? desce_no_heap(fprio, k) : sobe_no_heap(fprio, k);
 }
