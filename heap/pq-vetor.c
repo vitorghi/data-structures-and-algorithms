@@ -1,4 +1,9 @@
-#include <heap.h>
+/*
+    Implementação básica de uma ADT de priority queue usando vetores.
+    Insere em O(1) mas extrair leva O(n).
+*/
+
+#include <priority-queue.h>
 #include <stdio.h>
 #include <stdlib.h>
 

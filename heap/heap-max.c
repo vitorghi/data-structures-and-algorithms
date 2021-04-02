@@ -1,4 +1,23 @@
-#include <heap.h>
+/*
+    Implementação eficiente de uma ADT de priority queue usando heap.
+    Operações levam O(lg n).
+
+    Uma Binary (Max) Heap é uma árvore binária completa que mantém a propriedade de Max Heap.
+        - A raiz precisa ter uma chave de maior valor(prioridade) que seus filhos.
+        - E para ser uma árvore binária completa, a altura precisa ser de (lg n) e no último nível,
+          as folhas precisam estar o máximo a esquerda possível.
+
+    E, devido às propriedades acima, podemos representar uma árvore binária completa com vetor.
+    Exemplo:
+                    v[0]
+                v[1]    v[2]
+            v[3]  v[4] v[5]  v[6]
+          v[7]v[8]
+
+    Com isso, conseguimos saber os índices dos filhos e do pai de cada nó.
+*/
+
+#include <priority-queue.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -58,6 +77,7 @@ Item extrai_maximo(p_fp fprio) {
 }
 
 // O(lg n) mas precisamos conhecer a posição do item
+// podemos associar o item ao "id", usando hash table
 void muda_prioridade(p_fp fprio, int k, int valor) {
     int chave_antiga = fprio->v[k].chave;
     fprio->v[k].chave = valor;
