@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "arvore.h"
-#include "../pilha/pilha.h"
-#include "../fila/fila.h"
+//#include "../pilha/pilha.h"
+//#include "../fila/fila.h"
 
 p_no criar_arvore(int x, p_no esq, p_no dir) {
     p_no raiz = malloc(sizeof(No));
@@ -35,7 +35,7 @@ int altura(p_no raiz) {
 }
 
 /*
-    Percursos em profundidade (Depth-first)
+    Percursos em profundidade (DFS, Depth-first search)
       - relacionado com backtracking.
 
     Como eliminar a recursão?
@@ -43,7 +43,7 @@ int altura(p_no raiz) {
 */
 void imprime_pre_ordem(p_no raiz) {
     if (raiz == NULL) return;
-    printf("%d", raiz->dado);
+    printf("%d ", raiz->dado);
     imprime_pre_ordem(raiz->esq);
     imprime_pre_ordem(raiz->dir);
 }
@@ -52,16 +52,33 @@ void imprime_pos_ordem(p_no raiz) {
     if (raiz == NULL) return;
     imprime_pos_ordem(raiz->esq);
     imprime_pos_ordem(raiz->dir);
-    printf("%d", raiz->dado);
+    printf("%d ", raiz->dado);
 }
 
 void imprime_in_ordem(p_no raiz) {
     if (raiz == NULL) return;
     imprime_in_ordem(raiz->esq);
-    printf("%d", raiz->dado);
+    printf("%d ", raiz->dado);
     imprime_in_ordem(raiz->dir);
 }
 
+// Percurso em largura (BFS, Breadth-First search)
+void percurso_em_largura(p_no raiz) {
+    p_fila fila = criar_fila();
+    enfileirar(fila, raiz);
+    while(!eh_vazia(fila)) {
+        raiz = desenfileirar(fila);
+        if (raiz != NULL) {
+            enfileirar(fila, raiz->esq);
+            enfileirar(fila, raiz->dir);
+            printf("%d ", raiz->dado);
+        }
+    }
+    destruir_fila(fila);
+}
+
+/*
+// Percurso em profundidade (DFS, Depth-first search)
 void imprime_pre_ordem_iterativo(p_no raiz) {
     p_pilha pilha = criar_pilha();
     empilhar(pilha, raiz);
@@ -74,28 +91,6 @@ void imprime_pre_ordem_iterativo(p_no raiz) {
         }
     }
     destruir_pilha(pilha);
-}
-
-// Percurso em largura
-void percurso_em_largura(p_no raiz) {
-    p_fila fila = criar_fila();
-    enfileirar(fila, raiz);
-    while(!eh_vazia(fila)) {
-        raiz = desenfileirar(fila);
-        if (raiz != NULL) {
-            enfileirar(fila, raiz->dir);
-            enfileirar(fila, raiz->esq);
-            printf("%d", dado);
-        }
-    }
-    destruir_fila(fila);
-}
-
-void conta_folhas(p_no raiz, int count) {
-    if (raiz == NULL) return;
-    if (raiz->esq == NULL && raiz->dir == NULL) count++;
-    conta_folhas(raiz->esq, count);
-    conta_folhas(raiz->dir, count);
 }
 
 int arvore_eh_igual(p_no primeira, p_no segunda) {
@@ -126,4 +121,69 @@ int arvore_eh_igual(p_no primeira, p_no segunda) {
 
     destruir_fila(fila);
     return eh_igual;
+}
+*/
+void conta_folhas(p_no raiz, int count) {
+    if (raiz == NULL) return;
+    if (raiz->esq == NULL && raiz->dir == NULL) count++;
+    conta_folhas(raiz->esq, count);
+    conta_folhas(raiz->dir, count);
+}
+
+// Implementação Lista de nós de árvore
+void imprime_lista_rec(p_no_lista lista) {
+    if (lista == NULL) return;
+    printf("Valor: %d\n", lista->dado->dado);
+    imprime_lista_rec(lista->prox);
+}
+
+void destruir_lista_rec(p_no_lista lista) {
+    if (lista == NULL) return;
+    destruir_lista_rec(lista->prox);
+    free(lista);
+}
+
+// Implementação de fila usando Lista de nós de árvore
+p_fila criar_fila() {
+    p_fila f = malloc(sizeof(Fila));
+    f->ini = NULL;
+    f->fim = NULL;
+    return f;
+}
+
+void destruir_fila(p_fila f) {
+    destruir_lista_rec(f->ini);
+    free(f);
+}
+
+void imprimir_fila(p_fila f) {
+    imprime_lista_rec(f->ini);
+}
+
+void enfileirar(p_fila f, p_no x) {
+    p_no_lista novo = malloc(sizeof(No_Lista));
+    novo->dado = x;
+    novo->prox = NULL;
+    if (f->ini == NULL) {
+        f->ini = novo;
+    } else {
+        f->fim->prox = novo;
+    }
+    f->fim = novo;
+}
+
+p_no desenfileirar(p_fila f) {
+    if (f->ini == NULL) exit(1);
+    p_no_lista primeiro = f->ini;
+    p_no dado = primeiro->dado;
+    f->ini = f->ini->prox;
+    if(f->ini == NULL) {
+        f->fim = NULL;
+    }
+    free(primeiro);
+    return dado;
+}
+
+int eh_vazia(p_fila f) {
+    return f->ini == NULL;
 }

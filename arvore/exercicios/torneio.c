@@ -11,3 +11,15 @@ p_no torneio(int *v, int l, int r) {
    }
     return raiz;
 }
+
+int main() {
+    int participantes[] = {5, 1, 7, 4, 3, 2, 6, 8};
+
+    p_no resultado = torneio(participantes, 0, 7);
+    imprime_pre_ordem(resultado);
+    printf("\n");
+    percurso_em_largura(resultado);
+    printf("\n");
+
+    return 0;
+}
