@@ -17,7 +17,7 @@
     Com isso, conseguimos saber os índices dos filhos e do pai de cada nó.
 */
 
-#include <priority-queue.h>
+#include "priority-queue.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -25,8 +25,8 @@
 #define FILHO_ESQ(i) ((2 * i) + 1)
 #define FILHO_DIR(i) ((2 * i) + 2)
 
-void troca(int *a, int *b) {
-    int t = *a;
+void troca(Item *a, Item *b) {
+    Item t = *a;
     *a = *b;
     *b = t;
 }
@@ -82,4 +82,11 @@ void muda_prioridade(p_fp fprio, int k, int valor) {
     int chave_antiga = fprio->v[k].chave;
     fprio->v[k].chave = valor;
     chave_antiga > valor ? desce_no_heap(fprio, k) : sobe_no_heap(fprio, k);
+}
+
+void destroi(p_fp fprio) {
+    for (int i = 0; i <= fprio->n - 1; i++) {
+        free(&fprio->v[i]);
+    }
+    free(fprio);
 }

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void troca(int *a, int *b) {
     int t = *a;
@@ -14,12 +15,14 @@ void bubble_sort(int *v, int n) {
 }
 
 int main() {
-    int v[] = {7,9,11,13,1,5,6};
-    int n = 7;
+    int v[100000];
+    int n = 100000;
+    for (int i = 0; i < n; i++)
+        v[i] = rand();
     bubble_sort(v, n);
 
-    for (int i = 0; i < n; i++)
-        printf("%d ", v[i]);
+    //for (int i = 0; i < n; i++)
+    //    printf("%d ", v[i]);
 
     return 0;
 }

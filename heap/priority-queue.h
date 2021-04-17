@@ -15,3 +15,4 @@ void insere(p_fp fprio, Item item);
 Item extrai_maximo(p_fp fprio);
 int vazia(p_fp fprio);
 int cheia(p_fp fprio);
+void destroi(p_fp fprio);
