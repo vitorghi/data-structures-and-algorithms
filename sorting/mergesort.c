@@ -1,5 +1,13 @@
 #include <stdio.h>
 
+/*
+    Uso da divisão e conquista no algoritmo, a função merge(intercalação) leva tempo O(n)
+    e ela é chamada (lg n) vezes, altura da árvore recursiva. Portanto, mesmo no pior caso,
+    o merge sort tem uma complexidade de tempo O(n lg n), linearítmico.
+
+    No entanto, visto que a solução usa um vetor auxiliar, a complexidade de espaço é O(n)
+*/
+
 #define MAX 100
 
 void merge(int *v, int l, int m, int r) {
