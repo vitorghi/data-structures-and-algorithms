@@ -33,11 +33,11 @@ void mergesort(int *v, int l, int r) {
 }
 
 int main() {
-    int v[] = {7,9,11,13,1,5,6};
-    int n = 7;
+    int v[] = {4,8,2,7,6,3,5,1,9,10};
+    int n = 9;
     mergesort(v, 0, n);
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i <= n; i++)
         printf("%d ", v[i]);
     printf("\n");
 
