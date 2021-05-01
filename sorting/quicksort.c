@@ -12,8 +12,10 @@ int partition(int *v, int l, int r) {
     for(i = r; i >= l; i--)
         if (v[i] >= pivo) {
             posicao_pivo--;
+            printf("trocando %d por %d\n", v[i], v[posicao_pivo]);
             troca(&v[i], &v[posicao_pivo]);
         }
+    printf("finalizando particao\n\n");
     return posicao_pivo;
 }
 
@@ -26,8 +28,8 @@ void quicksort(int *v, int l, int r) {
 }
 
 int main() {
-    int v[] = {7,9,11,13,1,5,6};
-    int n = 7;
+    int v[] = {4,8,2,7,6,3,5,1,9,10};
+    int n = 10;
     //int v[100000];
     //int n = 100000;
     //for (int i = 0; i < n; i++)
