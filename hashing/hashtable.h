@@ -14,6 +14,7 @@ typedef Hash * p_hash;
 
 p_hash criar_hash();
 void destruir_hash(p_hash t);
+int hash(char *chave);
 void inserir(p_hash t, char *chave, int dado);
 void remover(p_hash t, char *chave);
 p_no buscar(p_hash t, char *chave);
