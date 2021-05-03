@@ -1,9 +1,9 @@
 #define MAX 1783
 
-typedef struct {
-    char chave[10];
+typedef struct No {
+    char *chave;
     int dado;
-    No * prox;
+    struct No * prox;
 } No;
 typedef No * p_no;
 
@@ -18,3 +18,9 @@ int hash(char *chave);
 void inserir(p_hash t, char *chave, int dado);
 void remover(p_hash t, char *chave);
 p_no buscar(p_hash t, char *chave);
+
+// Operações lista ligada
+p_no inserir_lista(p_no lista, char *chave, int x);
+p_no remover_lista(p_no lista, char *chave);
+p_no busca_elemento_lista(p_no lista, char *chave);
+void destruir_lista(p_no lista);
