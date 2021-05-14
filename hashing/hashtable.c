@@ -61,6 +61,24 @@ p_no remover_lista(p_no lista, char *chave) {
     return lista;
 }
 
+p_no remover_lista_rec(p_no lista, char *chave) {
+    p_no anterior = NULL;
+    removerRec(lista, anterior, chave);
+    return lista;
+}
+
+void removerRec(p_no atual, p_no anterior, char *chave) {
+    if(atual == NULL)
+        return;
+    if (atual->chave != chave)
+        removerRec(atual->prox, atual, chave);
+    else
+        if (anterior == NULL)
+            atual = atual->prox;
+        else
+            anterior->prox = atual->prox;
+}
+
 p_no busca_elemento_lista(p_no lista, char *chave) {
     if (lista == NULL || lista->chave == chave) {
         return lista;

@@ -2,7 +2,12 @@
     "files.associations": {
         "limits": "c",
         "string.h": "c",
-        "strings.h": "c"
+        "strings.h": "c",
+        "cstdio": "c",
+        "deque": "c",
+        "string": "c",
+        "vector": "c",
+        "functional": "c"
     },
     "C_Cpp.commentContinuationPatterns": [
 
