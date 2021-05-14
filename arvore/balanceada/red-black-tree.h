@@ -11,6 +11,7 @@ typedef No * p_no;
 int ehVermelho(p_no x);
 int ehPreto(p_no x);
 
+p_no criar_arvore();
 p_no rotaciona_para_esquerda(p_no raiz);
 p_no rotaciona_para_direita(p_no raiz);
 void sobe_vermelho(p_no raiz);
