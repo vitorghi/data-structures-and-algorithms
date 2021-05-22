@@ -35,12 +35,12 @@ p_no buscar_recursivo(p_no raiz, int chave) {
     if (raiz == NULL || chave == raiz->chave)
         return raiz;
     if (chave < raiz->chave)
-        return buscar(raiz->esq, chave);
+        return buscar_recursivo(raiz->esq, chave);
     else
-        return buscar(raiz->dir, chave);
+        return buscar_recursivo(raiz->dir, chave);
 }
 
-p_no buscar_recursivo(p_no raiz, int chave) {
+p_no buscar_iterativo(p_no raiz, int chave) {
     while (raiz != NULL && chave != raiz->chave)
         if (chave < raiz->chave)
             raiz = raiz->esq;
@@ -88,13 +88,6 @@ p_no maximo_iterativo(p_no raiz) {
     return raiz;
 }
 
-p_no sucessor(p_no x) {
-    if (x->dir != NULL)
-        return minimo(x->dir);
-    else
-         return ancestral_a_direita(x);
-}
-
 p_no ancestral_a_direita(p_no x) {
     if (x == NULL)
         return NULL;
@@ -102,6 +95,13 @@ p_no ancestral_a_direita(p_no x) {
         return x->pai;
     else
         return ancestral_a_direita(x->pai);
+}
+
+p_no sucessor(p_no x) {
+    if (x->dir != NULL)
+        return minimo(x->dir);
+    else
+         return ancestral_a_direita(x);
 }
 
 void remover_sucessor(p_no raiz) {
@@ -138,7 +138,7 @@ p_no remover(p_no raiz, int chave) {
 
 p_no apaga_folhas(p_no raiz) {
     if (raiz == NULL)
-        return;
+        return NULL;
     if (raiz->esq == NULL && raiz->dir == NULL) {
         free(raiz);
         return NULL;
