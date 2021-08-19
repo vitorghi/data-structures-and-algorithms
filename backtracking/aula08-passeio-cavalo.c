@@ -15,8 +15,9 @@ void proxima_posicao(int l, int c, int k, int *nl, int *nc) {
 
 int cavaloR(int **m, int n, int l, int c) {
     int k, nl, nc;
-    if (m[l][c] == n * n)
+    if (m[l][c] == n * n) // caso base
         return 1;
+
     for (k = 0; k < 8; k++) {
         proxima_posicao(l, c, k, &nl, &nc);
         if ((nl >= 0) && (nl < n) && (nc >= 0) && (nc < n) && (m[nl][nc] == 0)) {
