@@ -55,3 +55,38 @@ void imprime_arestas(p_grafo g) {
             if(g->adjacencia[u][v])
                 printf("{ %d, %d }\n", u, v);
 }
+
+int grau(p_grafo g, int u) {
+    int v, grau = 0;
+    for (v = 0; v < g->n; v++)
+        if (tem_aresta(g, u, v))
+            grau++;
+    return grau;
+}
+
+int mais_popular(p_grafo g) {
+    int u, max, grau_max, grau_atual;
+    max = 0;
+    grau_max = grau(g, 0);
+
+    for(u = 1; u < g->n; u++) {
+        grau_atual = grau(g, u);
+        if (grau_atual > grau_max) {
+            grau_max = grau_atual;
+            max = u;
+        }
+    }
+    return max;
+}
+
+void recomendacoes(p_grafo g, int u) {
+    int v, w;
+    for (v = 0; v < g->n; v++) {
+        if (tem_aresta(g, u, v)) {
+            for (w = 0; w < g->n; w++) {
+                if (tem_aresta(g, v, w) && w != u && !tem_aresta(g, u, w))
+                    printf("%d\n ", w);
+            }
+        }
+    }
+}
