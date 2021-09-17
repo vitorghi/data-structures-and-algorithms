@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "grafo.h"
+#include "grafo-matrix.h"
 
 p_grafo criar_grafo(int n) {
     p_grafo g = malloc(sizeof(Grafo));

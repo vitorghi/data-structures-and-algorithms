@@ -33,7 +33,7 @@ Dizemos que um grafo é esparso se ele tem "poucas" arestas
 
 ## Representação
 
-### Matriz de adjacências:
+### Matriz de adjacências
     - Se o grafo tem n vértices
     - Os vértices serão numerados de 0 a n - 1
     - A matriz de adjacências é n x n
@@ -42,6 +42,27 @@ Dizemos que um grafo é esparso se ele tem "poucas" arestas
     - adjacencia[u][v] = 0, significa que u e v não são vizinhos
         não há aresta que os liga
 
+### Lista de adjacências
+    - Se o grafo tem n vértices
+    - Teremos uma lista ligada para cada vértice
+    - A lista armazena quais são os vizinhos do vértice
+
+### Comparando lista e matriz de adjacência
+#### **Espaço para armazenamento**:
+| Representação | Espaço           |
+| ------------- | ---------------- |
+| Matriz        | O(\|V\|²)        |
+| Lista         | O(\|V\| + \|E\|) |
+
+#### **Tempo**:
+| Operação              | Matriz   | Lista   |
+| --------------------- | -------- | ------- |
+| Inserir               | O(1)     | O(1)    |
+| Remover               | O(1)     | O(d(v)) |
+| Aresta existe?        | O(1)     | O(d(v)) |
+| Percorrer vizinhança  | O(\|V\|) | O(d(v)) |
+
+> Qual usar? Depende das operações a serem usadas e se o grafo é esparso.
 
 # Grafos Dirigidos (Digrafos)
 

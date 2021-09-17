@@ -1,4 +1,4 @@
-#include "grafo.h"
+#include "grafo-matrix.h"
 
 int main() {
     p_grafo g = le_grafo();
