@@ -16,4 +16,5 @@ void insere_aresta(p_grafo g, int u, int v);
 void remove_aresta(p_grafo g, int u, int v);
 int tem_aresta(p_grafo g, int u, int v);
 p_grafo le_grafo();
+p_grafo le_digrafo();
 void imprime_arestas(p_grafo g);

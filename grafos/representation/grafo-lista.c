@@ -37,6 +37,10 @@ void insere_aresta(p_grafo g, int u, int v) {
     g->adjacencia[u] = insere_na_lista(g->adjacencia[u], v);
 }
 
+void insere_aresta_digrafo(p_grafo g, int u, int v) {
+    g->adjacencia[u] = insere_na_lista(g->adjacencia[u], v);
+}
+
 p_no remove_da_lista(p_no lista, int v) {
     p_no proximo;
     if (lista == NULL)
@@ -72,6 +76,18 @@ p_grafo le_grafo() {
     for (int i = 0; i < n_arestas; i++) {
         scanf("%d %d", &u, &v);
         insere_aresta(g, u , v);
+    }
+    return g;
+}
+
+p_grafo le_digrafo() {
+    int n_vertices, n_arestas, u, v;
+    scanf("%d %d", &n_vertices, &n_arestas);
+    p_grafo g = criar_grafo(n_vertices);
+
+    for (int i = 0; i < n_arestas; i++) {
+        scanf("%d %d", &u, &v);
+        insere_aresta_digrafo(g, u , v);
     }
     return g;
 }
