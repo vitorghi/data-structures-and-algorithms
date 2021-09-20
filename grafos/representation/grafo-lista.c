@@ -64,6 +64,18 @@ int tem_aresta(p_grafo g, int u, int v) {
     return 0;
 }
 
+p_grafo le_grafo() {
+    int n_vertices, n_arestas, u, v;
+    scanf("%d %d", &n_vertices, &n_arestas);
+    p_grafo g = criar_grafo(n_vertices);
+
+    for (int i = 0; i < n_arestas; i++) {
+        scanf("%d %d", &u, &v);
+        insere_aresta(g, u , v);
+    }
+    return g;
+}
+
 void imprime_arestas(p_grafo g) {
     for (int u = 0; u < g->n; u++)
         for (p_no t = g->adjacencia[u]; t != NULL; t = t->prox)
