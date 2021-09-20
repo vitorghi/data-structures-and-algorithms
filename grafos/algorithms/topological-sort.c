@@ -1,33 +1,34 @@
-#include "representation/grafo-lista.h"
+#include "../representation/grafo-lista.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-void dfs(int *visitados, p_no no, int v) {
+void dfs(int *visitados, p_grafo g, int v) {
     visitados[v] = 1;
 
-    for (p_no adj = no; adj != NULL; adj = adj->prox) {
-        if (!visitados[v])
-            dfs(*visitados, adj, adj->v);
-    }
-    printf("%d ", no->v);
+    for (p_no t = g->adjacencia[v]; t != NULL; t = t->prox)
+        if (!visitados[t->v])
+            dfs(visitados, g, t->v);
+
+    printf("%d ", v);
 }
 
 void topological_sort(p_grafo g) {
-    int *visitados = malloc(g->n * sizeof(int));
-    for (int i = 0; i < g->n; i++)
-        visitados[i] = 0;
+    int s, *visitados = malloc(g->n * sizeof(int));
+    for (s = 0; s < g->n; s++)
+        visitados[s] = 0;
 
-    for (int i = 0; i < g->n; i++)
-        if (!visitados[i])
-            dfs(visitados, g->adjacencia[i], i);
+    for (s = 0; s < g->n; s++)
+        if (!visitados[s])
+            dfs(visitados, g, s);
 
     printf("\n");
     free(visitados);
 }
 
 int main() {
-    p_grafo g = le_grafo();
+    p_grafo g = le_digrafo();
     topological_sort(g);
 
+    destroi_grafo(g);
     return 0;
 }
