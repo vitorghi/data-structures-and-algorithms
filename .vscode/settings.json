@@ -8,7 +8,8 @@
         "string": "c",
         "vector": "c",
         "functional": "c",
-        "grafo-lista.h": "c"
+        "grafo-lista.h": "c",
+        "pilha.h": "c"
     },
     "C_Cpp.commentContinuationPatterns": [
 
